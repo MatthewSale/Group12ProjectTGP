@@ -1,0 +1,66 @@
+{
+    "name": "PlayerControllsMain",
+    "maps": [
+        {
+            "name": "main player controlls",
+            "id": "bbc32531-724c-4216-8520-30542c053415",
+            "actions": [
+                {
+                    "name": "FowardMovment",
+                    "type": "Button",
+                    "id": "968b0a16-08f8-4d70-9da3-fa48027f19b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6388d54e-0703-49ed-95c8-dfa89b66a6d8",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FowardMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40e5d87b-7335-426f-8662-ef6a762b2084",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FowardMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1319b74c-69c3-43f3-a6da-4f7aa5ddd755",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FowardMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5647da5-6c2f-4247-b03a-17a463298cc1",
+                    "path": "<Keyboard>/numpad8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FowardMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
