@@ -2,7 +2,7 @@
     "name": "PlayerControllsMain",
     "maps": [
         {
-            "name": "main player controlls",
+            "name": "GamePlay",
             "id": "bbc32531-724c-4216-8520-30542c053415",
             "actions": [
                 {
@@ -51,6 +51,66 @@
                 {
                     "name": "",
                     "id": "d5647da5-6c2f-4247-b03a-17a463298cc1",
+                    "path": "<Keyboard>/numpad8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FowardMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "main player controlls1",
+            "id": "1fed18c9-5eac-4ed8-91fb-e1b988d98ab7",
+            "actions": [
+                {
+                    "name": "FowardMovment",
+                    "type": "Button",
+                    "id": "1e0cf6cb-9253-444a-a3a5-25f5a85fbd7d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0619de74-bbd4-4a4c-bca8-7c9b0b4a0696",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FowardMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcba829e-6f59-4865-8a58-9c59ab530d45",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FowardMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e270ca5-1720-48fe-b6be-e8372b1da1e0",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FowardMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f0bf488-c95a-4063-9035-895d8a9ca18c",
                     "path": "<Keyboard>/numpad8",
                     "interactions": "",
                     "processors": "",
