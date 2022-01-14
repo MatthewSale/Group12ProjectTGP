@@ -49,6 +49,14 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""rotate"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""17bc800c-f1cd-4a10-958a-3ce5fdeabb00"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -227,6 +235,28 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                     ""action"": ""BackMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75466ac4-89c3-46f0-883f-6df152b94192"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""781f6210-e2e4-4999-b8f4-3ba5f364e768"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -239,6 +269,7 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         m_GamePlay_LeftMovement = m_GamePlay.FindAction("LeftMovement", throwIfNotFound: true);
         m_GamePlay_RightMovement = m_GamePlay.FindAction("RightMovement", throwIfNotFound: true);
         m_GamePlay_BackMovement = m_GamePlay.FindAction("BackMovement", throwIfNotFound: true);
+        m_GamePlay_rotate = m_GamePlay.FindAction("rotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -292,6 +323,7 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_LeftMovement;
     private readonly InputAction m_GamePlay_RightMovement;
     private readonly InputAction m_GamePlay_BackMovement;
+    private readonly InputAction m_GamePlay_rotate;
     public struct GamePlayActions
     {
         private @PlayerControllsMain m_Wrapper;
@@ -300,6 +332,7 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         public InputAction @LeftMovement => m_Wrapper.m_GamePlay_LeftMovement;
         public InputAction @RightMovement => m_Wrapper.m_GamePlay_RightMovement;
         public InputAction @BackMovement => m_Wrapper.m_GamePlay_BackMovement;
+        public InputAction @rotate => m_Wrapper.m_GamePlay_rotate;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -321,6 +354,9 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                 @BackMovement.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnBackMovement;
                 @BackMovement.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnBackMovement;
                 @BackMovement.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnBackMovement;
+                @rotate.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRotate;
+                @rotate.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRotate;
+                @rotate.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRotate;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -337,6 +373,9 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                 @BackMovement.started += instance.OnBackMovement;
                 @BackMovement.performed += instance.OnBackMovement;
                 @BackMovement.canceled += instance.OnBackMovement;
+                @rotate.started += instance.OnRotate;
+                @rotate.performed += instance.OnRotate;
+                @rotate.canceled += instance.OnRotate;
             }
         }
     }
@@ -347,5 +386,6 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         void OnLeftMovement(InputAction.CallbackContext context);
         void OnRightMovement(InputAction.CallbackContext context);
         void OnBackMovement(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }

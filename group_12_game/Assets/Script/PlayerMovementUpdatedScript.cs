@@ -11,12 +11,24 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     bool can_move_right;
     bool can_move_back;
 
+    // camra variables
+    float Camra_rotation = 0f;
+    Vector2 rotate;
+    public Transform camra;
+    public Transform Player_modle;
+
     //default player speed
     public int speed = 6;
 
     void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        
         controlls = new PlayerControllsMain();
+        controlls.GamePlay.rotate.performed += context => rotate = context.ReadValue<Vector2>();
+        controlls.GamePlay.rotate.canceled += context => rotate = Vector2.zero;
         controlls.GamePlay.ForwardMovement.performed += con => MoveForward();
         controlls.GamePlay.LeftMovement.performed += con => MoveLeft();
         controlls.GamePlay.RightMovement.performed += con => MoveRight();
@@ -54,6 +66,13 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
             Vector3 alsoMove = transform.forward * - speed;
             C_controller.Move(alsoMove * 1 * Time.deltaTime);
         }
+
+        float yar = rotate.x;
+        float pitch = rotate.y;
+        Camra_rotation -= (pitch / 2);
+        Camra_rotation = Mathf.Clamp(Camra_rotation, -90f, 90f);
+        camra.localRotation = Quaternion.Euler(Camra_rotation, 0f, 0f);
+        Player_modle.Rotate(Vector3.up * yar);
     }
     
     void MoveForward()
@@ -106,11 +125,11 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
 
     private void OnEnable()
     {
-        controlls.GamePlay.Enable();
+       controlls.GamePlay.Enable();
     }
 
     private void OnDisable()
     {
-        controlls.GamePlay.Disable();
+       controlls.GamePlay.Disable();
     }
 }
