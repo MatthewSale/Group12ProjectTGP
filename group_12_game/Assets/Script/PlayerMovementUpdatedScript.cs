@@ -10,7 +10,9 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     bool can_move_left;
     bool can_move_right;
     bool can_move_back;
-    public int speed = 1;
+
+    //default player speed
+    public int speed = 6;
 
     void Awake()
     {
@@ -28,24 +30,25 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
 
     private void Update()
     {
+        //Forward Movement
         if(can_move_forward == true)
         {
             Vector3 alsoMove = transform.forward * speed;
             C_controller.Move(alsoMove * 1 * Time.deltaTime);
         }
-
+        //Left movement
         if (can_move_left == true)
         {
             Vector3 alsoMove = transform.right * - speed;
             C_controller.Move(alsoMove * 1 * Time.deltaTime);
         }
-
+        //Right movement
         if (can_move_right == true)
         {
             Vector3 alsoMove = transform.right * speed;
             C_controller.Move(alsoMove * 1 * Time.deltaTime);
         }
-
+        //back movement
         if (can_move_back == true)
         {
             Vector3 alsoMove = transform.forward * - speed;
