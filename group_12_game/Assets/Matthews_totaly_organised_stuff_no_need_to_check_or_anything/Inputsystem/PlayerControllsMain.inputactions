@@ -44,6 +44,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SleepFunction",
+                    "type": "Button",
+                    "id": "f916fff1-f6f3-46e9-83b1-846c359c3a98",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -242,6 +250,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fc7b56d-9cb1-4eb8-9839-4c083c22fee5",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SleepFunction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

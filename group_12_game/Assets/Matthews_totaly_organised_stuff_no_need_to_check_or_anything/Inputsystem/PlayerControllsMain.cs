@@ -57,6 +57,14 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SleepFunction"",
+                    ""type"": ""Button"",
+                    ""id"": ""f916fff1-f6f3-46e9-83b1-846c359c3a98"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -257,6 +265,17 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                     ""action"": ""rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fc7b56d-9cb1-4eb8-9839-4c083c22fee5"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SleepFunction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -270,6 +289,7 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         m_GamePlay_RightMovement = m_GamePlay.FindAction("RightMovement", throwIfNotFound: true);
         m_GamePlay_BackMovement = m_GamePlay.FindAction("BackMovement", throwIfNotFound: true);
         m_GamePlay_rotate = m_GamePlay.FindAction("rotate", throwIfNotFound: true);
+        m_GamePlay_SleepFunction = m_GamePlay.FindAction("SleepFunction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -324,6 +344,7 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_RightMovement;
     private readonly InputAction m_GamePlay_BackMovement;
     private readonly InputAction m_GamePlay_rotate;
+    private readonly InputAction m_GamePlay_SleepFunction;
     public struct GamePlayActions
     {
         private @PlayerControllsMain m_Wrapper;
@@ -333,6 +354,7 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         public InputAction @RightMovement => m_Wrapper.m_GamePlay_RightMovement;
         public InputAction @BackMovement => m_Wrapper.m_GamePlay_BackMovement;
         public InputAction @rotate => m_Wrapper.m_GamePlay_rotate;
+        public InputAction @SleepFunction => m_Wrapper.m_GamePlay_SleepFunction;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -357,6 +379,9 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                 @rotate.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRotate;
                 @rotate.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRotate;
                 @rotate.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRotate;
+                @SleepFunction.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSleepFunction;
+                @SleepFunction.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSleepFunction;
+                @SleepFunction.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSleepFunction;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -376,6 +401,9 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                 @rotate.started += instance.OnRotate;
                 @rotate.performed += instance.OnRotate;
                 @rotate.canceled += instance.OnRotate;
+                @SleepFunction.started += instance.OnSleepFunction;
+                @SleepFunction.performed += instance.OnSleepFunction;
+                @SleepFunction.canceled += instance.OnSleepFunction;
             }
         }
     }
@@ -387,5 +415,6 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         void OnRightMovement(InputAction.CallbackContext context);
         void OnBackMovement(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+        void OnSleepFunction(InputAction.CallbackContext context);
     }
 }
