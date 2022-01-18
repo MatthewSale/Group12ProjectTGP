@@ -11,10 +11,10 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     bool can_move_right;
     bool can_move_back;
 
-    // camra variables
-    float Camra_rotation = 0f;
+    // camera variables
+    float Camera_rotation = 0f;
     Vector2 rotate;
-    public Transform camra;
+    public Transform camera;
     public Transform Player_modle;
 
     //default player speed
@@ -69,9 +69,9 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
 
         float yar = rotate.x;
         float pitch = rotate.y;
-        Camra_rotation -= (pitch / 2);
-        Camra_rotation = Mathf.Clamp(Camra_rotation, -90f, 90f);
-        camra.localRotation = Quaternion.Euler(Camra_rotation, 0f, 0f);
+        Camera_rotation -= (pitch / 2);
+        Camera_rotation = Mathf.Clamp(Camera_rotation, -90f, 90f);
+        camera.localRotation = Quaternion.Euler(Camera_rotation, 0f, 0f);
         Player_modle.Rotate(Vector3.up * yar);
     }
     
