@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         SceneManager.sceneLoaded -= LoadState;
-        SceneManager.sceneLoaded += OnSceneLoaded;
+       // SceneManager.sceneLoaded += OnSceneLoaded;
 
         controlls = new PlayerControllsMain();
     }

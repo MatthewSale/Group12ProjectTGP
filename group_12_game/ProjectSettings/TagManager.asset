@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameManager
+  - Harry
+  - Damage
   layers:
   - Default
   - TransparentFX
