@@ -1,15 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public int Day_Counter;
     PlayerControllsMain controlls;
     bool toggle;
 
     private void Awake()
     {
+        if (GameManager.instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+
+        SceneManager.sceneLoaded -= LoadState;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         controlls = new PlayerControllsMain();
     }
 
@@ -42,4 +55,36 @@ public class GameManager : MonoBehaviour
     {
         controlls.GamePlay.Disable();
     }
+
+    public void SaveState()
+    {
+        Debug.Log("Saved");
+
+        string s = "";
+
+        s += "0" + "|";
+        s += Day_Counter.ToString() + "|";
+        //s += playerXP.ToString() + "|";
+        //s += weapon.weaponLevel.ToString();
+
+        PlayerPrefs.SetString("SaveState", s);
+    }
+
+    public void LoadState(Scene s, LoadSceneMode mode)
+    {
+        //SceneManager.sceneLoaded -= LoadState;
+
+        if (!PlayerPrefs.HasKey("SaveState"))
+            return;
+
+        string[] data = PlayerPrefs.GetString("SaveState").Split('|');
+
+        Day_Counter = int.Parse(data[1]);
+        //playerXP = int.Parse(data[2]);
+        //if (GetCurrentLevel() != 1)
+            //player.SetLevel(GetCurrentLevel());
+
+       // weapon.SetWeaponLevel(int.Parse(data[3]));
+    }
+
 }
