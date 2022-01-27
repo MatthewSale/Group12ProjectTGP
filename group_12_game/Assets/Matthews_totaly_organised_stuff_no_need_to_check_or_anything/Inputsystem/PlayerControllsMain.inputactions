@@ -52,6 +52,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "e6589b3a-cb98-4d5e-acfe-80d220afd6c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -261,6 +269,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SleepFunction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c357e2b8-50c3-412b-89e7-a86dc3ba730a",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -17,8 +17,10 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     public Transform camera;
     public Transform Player_modle;
 
-    //default player speed
-    public int speed = 6;
+    //player speed variabels
+    public int speed;
+    public float sprint_meater = 100;
+    bool toggle = true;
 
     void Awake()
     {
@@ -37,6 +39,9 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
         controlls.GamePlay.LeftMovement.canceled += con => DontMoveLeft();
         controlls.GamePlay.RightMovement.canceled += con => DontMoveRight();
         controlls.GamePlay.BackMovement.canceled += con => DontMoveBack();
+        controlls.GamePlay.Sprint.performed += con => Sprint();
+        controlls.GamePlay.Sprint.canceled += con => SprintStop();
+
         C_controller = this.GetComponent<CharacterController>();
     }
 
@@ -72,7 +77,7 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
         Camera_rotation -= (pitch / 2);
         Camera_rotation = Mathf.Clamp(Camera_rotation, -90f, 90f);
         camera.localRotation = Quaternion.Euler(Camera_rotation, 0f, 0f);
-        Player_modle.Rotate(Vector3.up * yar);
+        Player_modle.Rotate(Vector3.up * yar);        
     }
     
     void MoveForward()
@@ -123,6 +128,26 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
         can_move_back = false;
     }
 
+    void Sprint()
+    {
+        if(toggle == true)
+        {
+            StartCoroutine(delay());
+            toggle = false;
+        }
+
+        if (sprint_meater >= 0)
+        {
+            speed = 12;
+        }
+    }
+
+    void SprintStop()
+    {
+        toggle = true;
+        speed = 5;
+    }
+
     private void OnEnable()
     {
        controlls.GamePlay.Enable();
@@ -131,5 +156,14 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     private void OnDisable()
     {
        controlls.GamePlay.Disable();
+    }
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(0.0001f);
+        sprint_meater = sprint_meater - 0.01f;
+        if(toggle == false)
+        {
+            StartCoroutine(delay());
+        }
     }
 }
