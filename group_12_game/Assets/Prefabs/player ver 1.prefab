@@ -377,6 +377,9 @@ GameObject:
   - component: {fileID: 3007967396919273841}
   - component: {fileID: 3007967396919273840}
   - component: {fileID: 361090735465795210}
+  - component: {fileID: 1744994452}
+  - component: {fileID: 1744994443}
+  - component: {fileID: 1744994453}
   m_Layer: 0
   m_Name: player ver 1
   m_TagString: Harry
@@ -458,7 +461,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3007967396919273835}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -475,9 +478,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3176491d8a100d41ab274d1b10f2fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Is_moving: 0
   camera: {fileID: 3007967396762369204}
   Player_modle: {fileID: 3007967396919273839}
-  speed: 6
+  speed: 5
+  sprint_meater: 100
+  toggle: 1
 --- !u!143 &3007967396919273841
 CharacterController:
   m_ObjectHideFlags: 0
@@ -526,6 +532,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player_health: 100
+--- !u!54 &1744994452
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007967396919273835}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!95 &1744994443
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007967396919273835}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de63522cc746e7b4ba599433b787c3e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1744994453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007967396919273835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a38e5aba2437a4489493b44ebc4111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3007967398301929350
 GameObject:
   m_ObjectHideFlags: 0

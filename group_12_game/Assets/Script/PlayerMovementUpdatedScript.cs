@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMovementUpdatedScript : MonoBehaviour
 {
+    // controlls variable
     PlayerControllsMain controlls;
+
+    //movment varibales
     CharacterController C_controller;
     bool can_move_forward;
     bool can_move_left;
     bool can_move_right;
     bool can_move_back;
+    public bool Is_moving;
 
     // camera variables
     float Camera_rotation = 0f;
@@ -20,7 +24,7 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     //player speed variabels
     public int speed;
     public float sprint_meater = 100;
-    bool toggle = true;
+    public bool toggle = true;
 
     void Awake()
     {
@@ -84,48 +88,56 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     {
         Debug.Log("move forward");
         can_move_forward = true;
+        Is_moving = true;
     }
 
     void DontMoveForward()
     {
         Debug.Log("mstop walking");
         can_move_forward = false;
+        Is_moving = false;
     }
 
     void MoveLeft()
     {
         Debug.Log("moving left");
         can_move_left = true;
+        Is_moving = true;
     }
 
     void DontMoveLeft()
     {
         Debug.Log("mstop walking");
         can_move_left = false;
+        Is_moving = false;
     }
 
     void MoveRight()
     {
         Debug.Log("moving right");
         can_move_right = true;
+        Is_moving = true;
     }
 
     void DontMoveRight()
     {
         Debug.Log("mstop walking");
         can_move_right = false;
+        Is_moving = false;
     }
 
     void MoveBack()
     {
         Debug.Log("moving back");
         can_move_back = true;
+        Is_moving = true;
     }
 
     void DontMoveBack()
     {
         Debug.Log("mstop walking");
         can_move_back = false;
+        Is_moving = false;
     }
 
     void Sprint()
