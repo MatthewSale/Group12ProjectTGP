@@ -7,6 +7,7 @@ public class AnimationHandelerScript : MonoBehaviour
     Animator player;
     GameObject Game_Player;
     bool is_moving;
+    bool is_sprinting;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class AnimationHandelerScript : MonoBehaviour
     {
         PlayerMovementUpdatedScript G_M = Game_Player.GetComponent<PlayerMovementUpdatedScript>();
         is_moving = G_M.Is_moving;
+        is_sprinting =! G_M.toggle;
 
         if(is_moving == true)
         {
@@ -25,6 +27,15 @@ public class AnimationHandelerScript : MonoBehaviour
         else
         {
             player.SetBool("Is_walking", false);
+        }
+
+        if(is_sprinting==true)
+        {
+            player.speed = 10;
+        }
+        else
+        {
+            player.speed = 5;
         }
     }
 }

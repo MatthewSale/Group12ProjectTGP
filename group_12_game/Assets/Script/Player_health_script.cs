@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class Player_health_script : MonoBehaviour
 {
     public int Player_health;
     int damage;
     bool get_hit = false;
     bool toggle;
+    public Slider slider;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == ("Damage"))
@@ -38,6 +40,8 @@ public class Player_health_script : MonoBehaviour
         {
             SceneManager.LoadScene("Game Over");
         }
+
+        slider.value = Player_health;
     }
 
     IEnumerator delay()

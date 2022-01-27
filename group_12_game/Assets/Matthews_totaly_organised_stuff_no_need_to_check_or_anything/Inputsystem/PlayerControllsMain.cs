@@ -73,6 +73,22 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MovmentChecker"",
+                    ""type"": ""Button"",
+                    ""id"": ""7cf5ffb3-79ed-47b3-9a7f-0c8d4b736565"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LightToggleFunction"",
+                    ""type"": ""Button"",
+                    ""id"": ""53ad85aa-c66c-4351-a11a-f756f1741494"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -295,6 +311,105 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8186161-f71c-465b-8604-38162a292da5"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovmentChecker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c83159f9-8ef3-4db9-bffc-d486961a5829"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovmentChecker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ba76a6d-66b4-41c2-87a3-eb9c7e8f014d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovmentChecker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4459297d-618f-4fab-ba41-1de888026e62"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovmentChecker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e7a9596-cc7d-42ed-9462-df7f3e9056c6"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovmentChecker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf024055-fee4-4239-bf85-af69b547d1be"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovmentChecker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b71dcb02-2f5d-453f-856e-a40112cb2fcc"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovmentChecker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acbd51d6-faaf-4127-9744-6428e633ba6d"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovmentChecker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38657eb8-2a8b-44fa-89d0-fb05922dd1bb"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightToggleFunction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -310,6 +425,8 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         m_GamePlay_rotate = m_GamePlay.FindAction("rotate", throwIfNotFound: true);
         m_GamePlay_SleepFunction = m_GamePlay.FindAction("SleepFunction", throwIfNotFound: true);
         m_GamePlay_Sprint = m_GamePlay.FindAction("Sprint", throwIfNotFound: true);
+        m_GamePlay_MovmentChecker = m_GamePlay.FindAction("MovmentChecker", throwIfNotFound: true);
+        m_GamePlay_LightToggleFunction = m_GamePlay.FindAction("LightToggleFunction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -366,6 +483,8 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_rotate;
     private readonly InputAction m_GamePlay_SleepFunction;
     private readonly InputAction m_GamePlay_Sprint;
+    private readonly InputAction m_GamePlay_MovmentChecker;
+    private readonly InputAction m_GamePlay_LightToggleFunction;
     public struct GamePlayActions
     {
         private @PlayerControllsMain m_Wrapper;
@@ -377,6 +496,8 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         public InputAction @rotate => m_Wrapper.m_GamePlay_rotate;
         public InputAction @SleepFunction => m_Wrapper.m_GamePlay_SleepFunction;
         public InputAction @Sprint => m_Wrapper.m_GamePlay_Sprint;
+        public InputAction @MovmentChecker => m_Wrapper.m_GamePlay_MovmentChecker;
+        public InputAction @LightToggleFunction => m_Wrapper.m_GamePlay_LightToggleFunction;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -407,6 +528,12 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                 @Sprint.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSprint;
+                @MovmentChecker.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMovmentChecker;
+                @MovmentChecker.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMovmentChecker;
+                @MovmentChecker.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMovmentChecker;
+                @LightToggleFunction.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnLightToggleFunction;
+                @LightToggleFunction.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnLightToggleFunction;
+                @LightToggleFunction.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnLightToggleFunction;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -432,6 +559,12 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @MovmentChecker.started += instance.OnMovmentChecker;
+                @MovmentChecker.performed += instance.OnMovmentChecker;
+                @MovmentChecker.canceled += instance.OnMovmentChecker;
+                @LightToggleFunction.started += instance.OnLightToggleFunction;
+                @LightToggleFunction.performed += instance.OnLightToggleFunction;
+                @LightToggleFunction.canceled += instance.OnLightToggleFunction;
             }
         }
     }
@@ -445,5 +578,7 @@ public class @PlayerControllsMain : IInputActionCollection, IDisposable
         void OnRotate(InputAction.CallbackContext context);
         void OnSleepFunction(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnMovmentChecker(InputAction.CallbackContext context);
+        void OnLightToggleFunction(InputAction.CallbackContext context);
     }
 }
