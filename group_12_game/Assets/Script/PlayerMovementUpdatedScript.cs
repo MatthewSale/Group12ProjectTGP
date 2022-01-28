@@ -21,6 +21,7 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     Vector2 rotate;
     public Transform camera;
     public Transform Player_modle;
+    int Camera_Sensitivity = 3;
 
     //player speed variabels
     public int speed;
@@ -35,7 +36,7 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
     public GameObject Light;
     bool Light_Toggle = true;
     bool Light_meater_toggle;
-    float light_meate = 100;
+    public float light_meate = 100;
     bool Light_can_turn_on = true;
 
     void Awake()
@@ -110,10 +111,10 @@ public class PlayerMovementUpdatedScript : MonoBehaviour
 
         float yar = rotate.x;
         float pitch = rotate.y;
-        Camera_rotation -= (pitch / 2);
+        Camera_rotation -= (pitch / Camera_Sensitivity);
         Camera_rotation = Mathf.Clamp(Camera_rotation, -90f, 90f);
         camera.localRotation = Quaternion.Euler(Camera_rotation, 0f, 0f);
-        Player_modle.Rotate(Vector3.up * yar);        
+        Player_modle.Rotate(Vector3.up * (yar/Camera_Sensitivity));        
 
         if(Light.activeInHierarchy)
         {

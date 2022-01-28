@@ -20,7 +20,14 @@ public class AiController : MonoBehaviour
     {
         GameManager G_M = Game_Manager.GetComponent<GameManager>();
         Current_Day = G_M.Day_Counter;
-        AI.speed = Current_Day * 2 - 2;
+        if (G_M.AI_can_move == true)
+        {
+            AI.speed = Current_Day * 2 - 2;
+        }
+        else
+        {
+            AI.speed = 0;
+        }
         AI.destination = goal1.position;
     }
 }
