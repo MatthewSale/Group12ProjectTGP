@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
         controlls = new PlayerControllsMain();
     }
 
+    private void Start()
+    {
+        GameObject temp = GameObject.FindGameObjectWithTag("Screen");
+        cover = temp.GetComponent<Image>();
+    }
+
     private void Update()
     {
         controlls.GamePlay.SleepFunction.performed += con => Increse_Counter_By_One();
